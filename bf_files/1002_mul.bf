@@ -1,23 +1,37 @@
-# BrainF*ck Script to multiply two numbers
-# Result has to be less than 10 (a single digit number)
-
-# given example 42: 4 will be in block #1 2 will be in block #2
-# block 0 will store the result
-# block 1 will hold the value to multiply
-# block 2 will hold the amount of times to multiply
-# the result of an input of 42 will output the result of 4*2
-
-# read into block 1 and 2
-# subtract 48 from each: '0'
-# loop while block 2 != 0 adding the value of block 1 to block 0 every time
-
-# BLOCK 0	BLOCK 1		BLOCK 2		BLOCK 3 	BLOCK4
-# 0		4		1		0 		
-
->,------------------------------------------------ # read into #1
->,------------------------------------------------ # read into #2
-[<[>>+<<<+>-]>>[<<+>>-] COPY BLOCK 1 INTO BLOCK 3 AND 0 THEN COPY BLOCK 3 BACK TO BLOCK 1
-<-] MOVE BLOCK TO BLOCK 2 AND DECREASE (DONE WITH ONE ITERATION)
-
-# MOVE TO BLOCK 0 AND INCREASE BY ASCII '0' (DEC 48)
-<<++++++++++++++++++++++++++++++++++++++++++++++++.
+initializing c0 to 0's character code
+>++++++++ set c1 to 8
+[ while c1
+	<++++++ increment c0 by 6
+	>- decrement c1 by 1
+]
+, c1 = getchar()
+>, c2 = getchar()
+<< [ while c0
+	>- decrement c1 by 1
+	>- decrement c2 by 1
+	<<- decrement c0 by 1
+]
+> [ while c1
+	> [ while c2
+		>+ increment c3 by 1
+		>+ increment c4 by 1
+		<<- decrement c2 by 1
+	]
+	>> [ while c4
+		<<+ increment c2
+		>>- decrement c4
+	]
+	<<<- decrement c1
+]
+c3 contains the final product
+initializing c0 to 0's character code
+++++++++ set c1 to 8
+[ while c1
+	<++++++ add 6 to c0
+	>- decrement c1 by 1
+]
+< [ while c0
+	>>>+ increment c3 by 1
+	<<<- decrement c0 by 1
+]
+>>>. print c3
